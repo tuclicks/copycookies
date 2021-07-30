@@ -1,5 +1,6 @@
 chrome.tabs.getSelected(tab => {
-	chrome.cookies.getAll({"url":tab.url}, cookies => {
+	const url = new URL(tab.url)
+	chrome.cookies.getAll({"domain":url.hostname}, cookies => {
 		var area = document.createElement('textarea');
 		area.style.position = 'absolute';
 		area.style.border = '0';
